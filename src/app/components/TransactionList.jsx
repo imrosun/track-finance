@@ -37,17 +37,9 @@ export default function TransactionList({ transactions = [], onChange, loading }
     <Card className="w-full mt-4">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg">Transaction List</CardTitle>
-        {/* <Button
-          size="sm"
-          className="flex items-center gap-2"
-          onClick={() => setShowAdd(true)}
-        >
-          <Plus className="w-4 h-4" />
-          Add Transaction
-        </Button> */}
       </CardHeader>
       <CardContent className="overflow-x-auto p-0">
-        <div className="min-w-[600px] w-full">
+        <div className="min-w-[600px] w-full pl-5">
           <Table>
             <TableHeader>
               <TableRow>

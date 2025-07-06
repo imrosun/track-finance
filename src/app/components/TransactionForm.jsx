@@ -222,17 +222,7 @@ export default function TransactionForm({
               ? "Saving..."
               : "Add Transaction"}
           </Button>
-          {/* {isEdit && (
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onCancel}
-              disabled={isSubmitting}
-              className="w-full py-2 text-base rounded-lg"
-            >
-              Cancel
-            </Button>
-          )} */}
+
         </div>
       </form>
     </Form>

@@ -1,3 +1,14 @@
+## SCREENSHOT
+
+<img src="./screenshot/Home.png"/>
+
+## API/ENDPOINTS
+
+```bash
+http://localhost:3000/api/budget - POST, GET
+http://localhost:3000/api/transactions - POST, GET, DELETE, PATCH
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -1,11 +1,11 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 const schema = z.object({
@@ -14,11 +14,11 @@ const schema = z.object({
   }),
 });
 
-export default function BudgetModal({ open, onSubmit }) {
+export default function BudgetEditModal({ open, onClose, onSubmit, initialAmount }) {
   const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(schema),
-    defaultValues: { amount: "" },
+    defaultValues: { amount: initialAmount ? String(initialAmount) : "" },
   });
 
   const handleSubmit = async (values) => {
@@ -28,18 +28,15 @@ export default function BudgetModal({ open, onSubmit }) {
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Set your monthly budget</DialogTitle>
+          <DialogTitle>Edit Budget</DialogTitle>
         </DialogHeader>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-4"
-        >
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
           <Input
             type="number"
-            placeholder="Enter budget amount"
+            placeholder="Enter new budget amount"
             {...form.register("amount")}
             min={0}
             step={0.01}
@@ -51,7 +48,7 @@ export default function BudgetModal({ open, onSubmit }) {
             </div>
           )}
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Saving..." : "Save Budget"}
+            {loading ? "Updating..." : "Update Budget"}
           </Button>
         </form>
       </DialogContent>

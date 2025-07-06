@@ -18,7 +18,7 @@ export async function DELETE(req, { params }) {
 export async function PATCH(req, { params }) {
   try {
     await connectToDatabase();
-    const { id } = params;
+    const { id } = await params;
     const data = await req.json();
     const updated = await Transaction.findByIdAndUpdate(id, data, { new: true });
     if (!updated) {
